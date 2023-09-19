@@ -31,3 +31,8 @@ export const formatCurrentMonth = (currentMonth: string): string => {
 
   return `${months[parseInt(month) - 1]} de ${year}`
 }
+
+export const getYearMonthDateForSetInList = (date: string): Date =>{
+  const [year, month, day] = date.split('-')
+  return new Date(parseInt(year), parseInt(month), parseInt(day))
+}

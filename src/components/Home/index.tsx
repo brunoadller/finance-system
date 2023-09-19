@@ -1,11 +1,11 @@
 import {useState, useEffect} from 'react'
-import { Category } from '../../types/Category'
 import { Item } from '../../types/Item'
 import { categories } from '../../data/categories'
 import { items } from '../../data/items'
-import { getCurrentMonth, filterListByMonth } from '../../helpers/dateFilter'
+import { getCurrentMonth, filterListByMonth} from '../../helpers/dateFilter'
 import TableArea from '../TableArea'
 import InfoArea from '../InfoArea'
+import Register from '../Register'
 
 const  Home = () => {
   const [list, setList] = useState<Item[]>(items);
@@ -16,7 +16,7 @@ const  Home = () => {
 
   useEffect(() => {
     setFilteredList(filterListByMonth(list, currentMonth))
-    
+   
   }, [list, currentMonth])
 
   useEffect(() => {
@@ -37,6 +37,11 @@ const  Home = () => {
   const handleMonthChange = (newMonth: string) => {
     setCurrentMonth(newMonth)
   }
+  const isRegister = (itemsList: Item) => {
+    const newList = [...list]
+    newList.push(itemsList)
+    setList(newList)
+  }
   return (
     <div>
       <main className = "m-auto max-w-7xl mb-[50px]">
@@ -47,7 +52,7 @@ const  Home = () => {
         onMonthChange={handleMonthChange}
         currentMonth = {currentMonth}/>
         {/*Area de inserção*/}
-
+        <Register isRegister = {isRegister} />
         {/*Area de itens*/}
         <TableArea list = {filteredList}/>
       </main>

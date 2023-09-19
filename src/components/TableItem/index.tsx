@@ -6,8 +6,7 @@ type ItemProps = {
   item: Item
 }
 const TableItem = ({ item }:ItemProps) => {
-  //const [list, setList] = useState<Item[]>(item)
-
+ 
   return (
     <tr className="">
       <td className="py-[10px] px-4">{formatDate(item.date)}</td>
@@ -15,8 +14,7 @@ const TableItem = ({ item }:ItemProps) => {
         <div className= {
           `inline-block px-[10px] py-[5px] 
           rounded-[5px] text-white  
-          ${categories[item.category].color}`
-          }>
+          ${categories[item.category].color}`}>
           {categories[item.category].title}
         </div>
       </td>
